@@ -1,0 +1,36 @@
+1. 입출력 스트림
+    1) 네트워크에서 자료의 흐름이 물의 흐름과 같다는 비유에서 스트림 용어가 사용됨
+    2) 다양한 입출력 장치에 독립적으로 일관성 있는 입출력을 할 수 있도록 입출력 스트림을 제공함
+        - 파일 디스크, 키보드, 마우스, 네트워크, 메모리 등
+
+2. 입출력 스트림의 구분
+    1) 대상 기준 : 입력 스트림 / 출력 스트림
+    2) 자료의 종류 : 바이트 스트림 / 문자 스트림
+    3) 기능 : 기반 스트림 / 보조 스트림
+
+3. 입력 스트림 / 출력 스트림
+    1) 입력 스트림 : 대상으로부터 자료를 읽어 들이는 스트림
+        - FileInputStream, FileReader, BufferedInputStream, BufferedReader
+    2) 출력 스트림 : 대상으로 자료를 출력하는 스트림
+        - FileOutputStream, FileWriter, BufferedOutputStream, BufferedWriter
+
+4. 바이트 단위 스트림 / 문자 단위 스트림
+    1) 바이트 단위 스트림
+        - 동영상, 음악 파일, 이미지, 실행 파일 등의 자료를 읽고 쓸 때 사용
+        - FileInputStream, FileOutputStream, BufferedInputStream, BufferedOutputStream
+    2) 문자 단위 스트림
+        - 바이트 단위로 자료를 처리하면 문자는 깨짐
+            -> 인코딩에 맞게 2바이트 이상으로 처리하도록 구현된 스트림
+        - FileReader, FileWriter
+
+5. 표준 입출력 스트림
+    1) System 클래스 멤버로 제공
+        - System.out
+            - 표준 출력(모니터) 스트림
+            - System.out.println();
+        - System.in
+            - 표준 입력(키보드) 스트림
+            - System.in.read();
+        - System.err
+            - 표준 에러 출력(모니터) 스트림
+            - System.err.println();

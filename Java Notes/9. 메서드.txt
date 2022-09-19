@@ -1,0 +1,70 @@
+1. 자주 쓰는 메서드 - Math.random()
+    1) 특정 범위의 난수 리턴
+        0.0 <= Math.random() < 1.0
+
+    2) 1 ~ 10까지의 임의의 정수 얻기
+       0.0 * 10 <= (int)Math.random() * 10 < 1.0 * 10
+       --------                              --------
+          0.0    (0,1,2,3,4,5,6,7,8,9)         10.0
+          
+       0.0 * 10 + 1 <= (int)Math.random() * 10  + 1 < 1.0 * 10 + 1
+       ------------                                   ------------
+           1.0           (1,2,3,4,5,6,7,8,9,10)           11    
+
+     3) 공식
+        int num = (int)(Math.random() * n) + start number
+
+        ex) 주사위 번호 뽑기
+                int num = (int)(Math.random() * 6) + 1
+            로또 번호 뽑기
+                int num = (int)(Math.random() * 45) + 1
+
+2. 메서드
+    1) 함수 (Function)
+    2) 클래스 안에 존재하는 함수
+    3) 수학에서의 함수
+            숫자1, 숫자2
+                 ||
+                 \/
+             ------------------
+             |                 |
+             |   더하기 함수    |
+             |                 |
+             ------------------ 
+                             ||
+                             \/
+                             숫자의 합
+
+        자바에서의 함수
+            num1, num2
+                 ||
+                 \/
+             ------------------
+             |                 |
+             |   addNum()      |
+             |                 |
+             ------------------ 
+                             ||
+                             \/
+                             result
+    4) 메서드 정의
+        int addNum (int num1, int num2) {
+            int result = num1 + num2;
+            return result;
+        }
+    
+    5) main() 메서드 : 프로그램 시작(entrypoint)
+                     반환형 메서드이름    매개변수
+                      ---- ----          ---- 
+        public static void main(String[] args) {
+            System.out.println("이순신");
+            hello(12);
+        }
+
+        public static void hello(int age) {
+            System.out.println("안녕하세요.");
+        }
+
+    6) 메서드 종료하기
+        - return : 어떤 값을 반환하는데 사용하는 예약어
+        

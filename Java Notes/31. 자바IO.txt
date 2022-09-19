@@ -1,0 +1,125 @@
+1. 바이트 단위 스트림
+    1) InputStream
+        - 바이트 단위 입력 스트림 최상위 추상 클래스
+        - 하위 스트림이 상속받아 구현함
+        - 주요 메서드
+            - int read()
+                - 입력 스트림으로부터 한 바이트의 자료를 읽음
+                - 읽은 자료의 바이트 수를 반환함
+            - int read(byte[] b)
+                - 입력 스트림으로부터 b[] 크기의 자료를 b[]에 읽음
+                - 읽은 자료의 바이트 수를 반환함
+            - int read(byte[] b, int off, int len)
+                - 입력 스트림으로부터 b[] 크기의 자료를 b[]의 off변수 위치부터 len만큼 읽음
+                - 읽은 자료의 바이트 수만큼 반환함
+            - void close()
+                - 입력 스트림과 연결된 대상 리소스를 담음
+        - FileInputStream
+            - int read() : 파일에서 한 바이트씩 자료 읽기
+                           파일의 끝까지 한 바이트씩 자료 읽기
+            - int read(byte[] b) : 파일에서 바이트 배열로 자료 읽기
+                - 배열에 남아 있는 자료가 있을 수 있음
+
+    2) OutputStream
+        - 바이트 단위 출력 스트림 최상위 추상 클래스
+        - 하위 스트림이 상속받아 구현함
+        - 주요 메서드
+            - void write(int b)
+                - 한 바이트를 출력함
+            - void write(byte[] b)
+                - b[] 크기의 자료를 출력함
+            - void write(byte[] b, int off, int len)
+                - b[] 배열에 있는 자료의 off 위치부터 len 개수 만큼 자료를 출력함
+            -  void flush()
+                - 출력 버퍼를 강제로 비워 자료를 출력함
+                - 출력 버퍼를 비울 때 사용
+            - void close()
+                - 출력 스트림과 연결된 대상 리소스를 담음                
+                - 내부에서 flush()가 호출되므로 close() 메서드가 호출되면 출력 버퍼가 비워짐
+
+        - FileOutputStream
+            - 파일에 한 바이트 쓰기
+            - byte[] 배열에 A-Z까지 넣고 배열을 한꺼번에 파일에 쓰기
+
+2. 문자 단위 입출력 스트림
+    1) Reader
+        - 문자 단위 입력 스트림 최상위 추상 클래스
+        - 하위 스트림이 상속받아 구현함
+    2) 주요 하위 클래스
+        -FileReader
+            - 파일에서 문자 단위로 읽는 스트림 클래스
+        - InputStreamReader
+            - 바이트 단위로 읽은 자료를 문자로 변환해주는 보조 스트림 클래스
+        - BufferReader
+            - 문자로 읽을 때 배열을 제공하여 한꺼번에 읽을 수 있는 기능을 제공하는 보조 스트림
+    3) 주요 메서드
+        - int read()
+            -파일로부터 한 문자를 읽고 읽은 문자를 반환함
+        - int read(char[] cbuf)
+            - 파일로부터 cbuf 배열에 문자를 읽음
+        - int read(char[] cbuf, int off, int len)
+            - 파일로부터 cbuf 배열의 off위치로부터 len 개수만큼의 문자를 읽음
+        - void close()
+            - 입력 스트림과 연결된 대상 리소스를 닫음
+
+3. 문자 단위 출력 스트림
+    1) writer
+        - 문자 단위 출력 스트림 추상 클래스
+        - 하위 스트림이 상속받아 구현함
+    2) 주요 하위 클래스
+        - FilterWriter
+            - 파일에서 문자 단위로 출력하는 스트림 클래스
+        - OutputStreamWriter
+            - 바이트 단위로 자료를 문자로 변환해 출력해주는 보조 스트림 클래스
+        - BufferedWriter
+            - 문자로 쓸 때 배열을 제공하여 한꺼번에 쓸 수 있는 기능을 제공하는 보조 스트림
+    3) 주요 메서드
+        - void write(int c)
+            - 한 문자를 파일에 출력함
+        - void wirte(char[] cbuf)
+            - 문자 배열 cbuf의 내용을 출력함
+        - void write(char[] cbuf, int off, int len)
+            - 문자 배열 cbuf의 off위치에서부터 len 개수의 문자를 출력함
+        - void write(String str)
+            - 문자열 str을 출력함
+        - void wirte(String str, int off, int len)
+            - 문자열 str의 off번째 문자로부터 len개수만큼 출력함
+        - void flush()
+            - 출력하기 전에 자료가 있는 공간(출력버퍼)을 비워 출력하도록 함
+        - void close()
+            - 스트림과 연결된 리소스를 닫음 출력 버퍼도 비워짐
+
+4. 보조 스트림 클래스들
+    1) 보조 기능을 제공하는 스트림
+        - 기반 스트림 + 보조 스트림 + 보조 스트림
+            예) 바이트 단위 파일 입력 스트림 + 문자로 변환 기능 추가 + 버퍼링 기능 추가 
+    2) FileInputStream, FileOutputStream이 보조 스트림의 상위 클래스임
+        - InputStreamReader와 OutputStreamWriter
+            - 바이트 단위로 읽거나 쓰는 자료를 문자로 변환해주는 보조 스트림
+        - BufferedInputStream와 BufferedOutStream
+            - 약 8k의 배열이 제공되어 입출력이 빠르게 하는 기능이 제공되는 보조 스트림
+        - BufferedReader와 BufferedWriter
+            - 문자용 입출력 보조 스트림
+    3) 생성자의 매개변수로 또 다른 스트림(기반 스트림이나 다른 보조 스트림)을 가짐
+        - FilterWriter(InputStream in)
+            - 생성자의 매개변수로 InputStream을 받음
+        - FileOutputStream(OutputStream out)
+            - 생성자의 매개변수로 OutputStream을 받음
+    4) Decorator pattern으로 구현 됨
+
+5. 그 외 입출력 클래스
+    1) File 클래스
+        - 파일 개념을 추상화한 클래스
+        - 입출력 기능은 없고, 파일의 이름, 경로 등 속성을 알 수 있음
+
+6. 데코레이터 패턴
+    1) 자바의 입출력 스트림은 Decorator pattern임
+    2) 여러 Decorato들을 활용하여 다양한 기능을 제공
+    3) 상속보다 유연한 확장이 가능한 패턴
+    4) 데코레이터는 다른 데코레이터 또는 컴포넌트를 포함해야 함
+    5) 지속적인 기능 추가와 제거가 용이
+    6) 예
+        - 아메리카노
+          아메리카노 + 우유 = 카페라떼
+          아메리카노 + 우유 + 모카시럽 => 모카라떼
+          아메리카노 + 우유 + 모카시럽 + 크림 => 휘핑이 올라간 모카라떼

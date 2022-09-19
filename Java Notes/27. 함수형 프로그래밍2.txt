@@ -1,0 +1,57 @@
+0. 객체지향 프로그래밍 + 함수형 프로그래밍
+    1) 람다 계산법 사용된 식을 프로그래밍 언어에 접목
+    2) 람다식 => 매개변수를 가진 코드 블럭 => 익명 내부 객체 
+
+1. 람다식 문법
+    1) 익명 함수(Anonymous Function)를 생성하기 위한 식
+    2) 매개 변수와 매개변수를 이용한 실행문
+        (매개변수) -> {실행문;}
+
+    3) add() 함수
+        - 두 수를 입력 받아 더하는 함수
+        int add(int x, int y){
+            return x+y;
+        }
+        
+        - 람다식으로 표현
+        (int x, int y) -> {return x+y;}
+
+        - 매개변수가 하나인 경우 자료형과 괄호 생략 가능
+            str -> {System.out.println(str);}
+
+        - 매개변수가 두 개 이상인 경우 괄호 생략 할 수 없음
+            x,y -> {System.out.println(str);}               //오류
+
+        - 실행문이 한 문장인 경우 중괄호 생략 가능
+            str -> System.out.println(str);
+        - 실행문이 한 문장이더라도 return문(반환문)은 중괄호를 생략 할 수 없음
+            str -> return.str.length();                     //오류
+
+        - 실행문이 한 문장의 반환문인 경우엔 return과 중괄호 모두 생략
+            (x,y) -> x+y;
+            str -> str.length;
+
+2. 함수형 인터페이스
+    1) 람다식을 선언하기 위한 인터페이스
+    2) 익명 함수와 매개변수만으로 구현되므로 인터페이스는 단 하나의 메서드만을 선언해야 함
+        - 단 하나의 abstract method만을 가지는 인터페이스
+        (Single Abstract Method Interface)
+    3) @FunctionalInterface 애노테이션 (annotation)
+        - 함수형 인터페이스라는 의미
+        - 내부에 여러 개의 메서드를 선언하면 에러남
+
+3. OOP vs Lamda (문자열 두 개를 연결하여 출력하는 것 구현)
+    1) 객체지향 프로그래밍으로 구현하기
+        - 인터페이스 선언
+        - 인터페이스 구현한 클래스 만들기
+        - 객체 생성하고 메서드 호출하기
+
+    2) 람다식으로 구현하기
+        
+4. Functional Interface
+    1) Supplier
+        - 퍼줌
+    2) Consumer
+        - 먹보
+    3) BiConsumer
+        - 더 먹보
