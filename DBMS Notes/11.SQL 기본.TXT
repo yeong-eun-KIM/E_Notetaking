@@ -1,11 +1,42 @@
-1. 데이터 언어 종류
-    1) DDL (데이터 정의어)
-        - 스키마 구조와 제약조건 등의 정의, 수정, 삭제
-    2) DML (데이터 조작어)
-        - 데이터의 삽입, 삭제, 수정, 검색
-    3) DCL (데이터 제어어)
 
-2. SELECT
+0. SQL
+    1) SEQUEL (Structure English QUEry Laugauge)
+        1) 1974년 IBM에서 연구용 DBMS인 SYSTEM R을 위한 언어로 개발됨    
+    2) ANIS/ISO가 표준 Standard SQL를 지원함
+        - SQL(Structure Query Laugauge)
+        - SQL-86, SQL-92, SQL-99 ....
+1.  SQOL(데이터 언어) 종류
+    1) DDL (데이터 정의어) : Data Definition Laugauge
+        - 스키마 구조와 제약조건 등의 정의, 수정, 삭제
+        - 테이블을 생선, 변경, 제거하는 기능을 제공
+    2) DML (데이터 조작어) : Data Maniplation Laugauge
+        - 데이터의 삽입, 삭제, 수정, 검색
+        - 테이블에 새 데이터를 삽입,
+        - 테이블에 저장된 데이터를 수정, 삭제하는 기능을 제공
+        - SELECT : 테이블 데이터를 조회하는 기능을 제공
+    3) DCL (데이터 제어어) : Data Control Laugauge
+        - 보안을 위해 데이터에 대한 접근 및 사용권한을 조절하는 기능 제공
+
+2. DML
+    1) 테이블의 레코드를 CRUD(Create, Retrieve, Update, Delete)
+    2) INSERT
+       SELECT
+       UPDATE
+       DELETE
+    3) 데이터 직접 삽입
+        INSERT INTO 테이블이름 [(속성들)]
+        VALUES (속성값들);
+    4) 데이터 수정
+        UPDATE 테이블이름
+        SET 속성이름1 = 값1, 속성이름2 = 값2, ....
+        [WHERE 조건];
+    5) 데이터 삭제 
+        DELETE FROM 테이블이름
+        [WHERE 조건];
+
+
+
+3. SELECT
     1) 테이블에서 데이터를 조회 혹은 출력
     2) SELECT문의 끝이 세미콜론(;)으로 끝남
     3) 컬럼간 문자열 결합
