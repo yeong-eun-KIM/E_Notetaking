@@ -30,8 +30,10 @@
                 - 시간값 최대 6자리의 정밀도를 가짐
         - TIMESTAMPTZ
             - 시간대(TIMEZONE)가 없는 년월시분초.마이크로세컨드 저장
-        - TIMESTAMPZ
+        - TIMESTAMP
             - 시간대(TIMEZONE)가 있는 년월시분초.마이크로세컨드 저장
+        - INTERVAL
+            - 시간 간격
 
 2. 테이블 생성
     1) 제약조건

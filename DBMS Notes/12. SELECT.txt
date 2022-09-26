@@ -1,10 +1,10 @@
 1. Syntax
-    1) SELECT [DISTINCT] {* | <COLUMN_NAME>, .....}
-        FROM    테이블이름(들) [AS 테이블이름 별칭]
-        [WHERE 검색조건(들)]
-        [GROUP BY 속성이름]
-        [HAVING 검색조건(들)]
-        [ORDER BY 속성이름[ASC|DESC]]
+    1) SELECT [DISTINCT] {* | <COLUMN_NAME>, .....} -5
+        FROM    테이블이름(들) [AS 테이블이름 별칭] -1
+        [WHERE 검색조건(들)] -2
+        [GROUP BY 속성이름] -3
+        [HAVING 검색조건(들)] -4
+        [ORDER BY 속성이름[ASC|DESC]] -6
 
         - ALL : 투플의 중복을 허용하도록 지정
         - DISTINCT : 투플의 중복을 허용하지 않도록 지정
@@ -58,7 +58,7 @@
                             0부터 시작함
 
             - FETCH 절
-                - SELECT문에서 반환된는 결과집합의 행의 건수를 제한함
+                - SELECT문에서 반환되는 결과집합의 행의 건수를 제한함
 
             - LIMIT vs FETCH
                 - 기능적으로 동일함
@@ -87,4 +87,67 @@
         - CASE 문
             - IF문과 같은 분기처리에 의한 SQL문 작성이 가능함
         - CASE 문 (ORDER BY)
+
+        - 그룹별 검색 (GROUP BY)
+            - 특정 속성의 값이 가은 투플을 모아 그룹을 만들고, 그룹별로 검색
+            - HAVING 키워드를 함께 이용해 그룹에 대한 조건을 작성
+            - SELECT절에 등장한 컬럼은 GROUP BY에 모두 명시해야 함
+                - 집계함수 제외
         
+        - WHERE절과 HAVING절의 차이
+            - WHERE : "집계 전" 데이터를 필터링
+                - where절에는 집계함수가 올 수 없음
+            - HAVING : "집계 후: 데이터를 필터링
+                - having절에는 집계함수만 올 수 있음
+
+2. null을 이용한 검색
+    1) null은 empty가 아닌 unknown
+    2) is null 키워드를 이용해 특정 속성의 값이 null 값인지를 비교
+       is not null 키워드를 이용해 특정 속성의 값이 null 값이 아닌지를 비교
+    3) null 값과 산술 연산 및 비교 연산
+        - 결과는 null
+            예) 5 + null => null
+                null > 5 => null
+                null = null => null
+    4) null과 논리 연산 결과
+        - OR
+            - (null OR true) = true
+            - (null OR false) = null
+            - (null OR null) = null
+        - AND
+            - (null AND true) = null
+            - (null AND false) = false
+            - (null AND null) = null
+        - NOT
+            - (Not null) = null
+
+3. NULL 관련 함수
+    1) NULLIF 함수
+        - null 처리 할 수 있음
+    2) COALESCE 함수
+
+4. CAST 연산자
+    1) 데이터 타입(유형)을 변환
+    2) 문자열을 INTERVAL형으로 형변환
+        - 시간계산에 활용할 수 있음
+    3) 문자열을 TIMESTAMP 형식으로 변환
+
+5. 문자열함수
+
+6. 날짜 관련 함수
+    1) 일자와 시간을 다루는 함수
+    2) 일자와 시간 추출 함수
+    3) 문자열을 일자 및 시간형으로 형변환하는 함수    
+
+7. 수학 관련 함수
+    1) 반올림, 올림, 내림, 자름 관련 함수
+    2) 연산 관련 함수
+    3) 집계 함수
+        - 개수, 합계, 평균, 최대값, 최소값
+        - SELECT절이나 HAVING절에서만 사용 가능
+        - WHERE절에서는 사용불가
+        예) count() : 레코드 개수 리턴
+            max() : 컬럼값의 최대값을 리턴
+            min() : 컬럼값의 최소값을 리턴
+            sum() : 컬럼값의 합을 리턴
+            avg() : 컬럼값의 평균을 리턴
