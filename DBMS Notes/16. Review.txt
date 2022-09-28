@@ -1,0 +1,46 @@
+1. JOIN이 필요한 이유
+    1) 필요한 정보 (상품명, 유저 정보, 카테고리 정보 등)가 각기 다른 테이블에 분산 저장되어 있을 때,
+     이를 하나의 테이블로 가져와 보기좋게 데이터를 추출하기 위해
+
+2. 데이터 유형
+    1) 문자형
+        - CHAR, VARCHAR, LONG, CLOB
+    2) 숫자형
+        - INT, BIGINT, NUMERIC, FLOAT, DOUBLE
+    3) 날짜형
+        - DATE, TIMESTAMP
+    4) 참/거짓
+        - BOOLEAN
+
+3. 데이터 유형 변환 방법
+                    CAST(컬럼명 as type)                   to_date(컬럼명, 'format')
+        숫자형 <==============================> 문자형 <==============================> 날짜형
+                    컬럼명::type                           to_char(컬럼명, 'format')
+
+4.  문자형 데이터 가공하기
+    1) 특정 문자열만 잘라내기
+        - left(), right(), substring()
+    2) 문자열 합치기
+        - A||B, concat(A,B)
+    3) 조건별로 그룹핑하기
+        - CASE WHEN ~ ELSE ~ END
+    4) NULL값 치환하기
+        - NVL(컬럼명, 치환값)
+        - COALESCE (컬럼명, 치환값)
+    5) 그 외
+        - 특정 문자열 자르기 : TRIM(),LTRIM(),RTRIM()
+        - 특정 문자열을 임의의 값으로 변경하기 : REPLACE()
+        - 대문자로 변경 : UPPER()
+        - 소문자로 변경 : LOWER()
+        - 문자열의 길이 반환 : LENGTH()
+
+5. 숫자형 데이터 가공하기
+    1) 반올림, 올림, 내림
+        - ROUND(), CEILING(), TRUNC()
+    2) 절대값 변환 : ABS()
+    3) NULL값 치환하기 : COALESCE(컬럼명,0), NAL(컬럼명,0)
+
+6. 날짜형 데이터 가공하기
+    1) 날짜 더하기 : 날짜 + INTERVAL '기간', DATEADD('기간',01,날짜)
+    2) 날짜 간 빼기 : DATEDIFF('기간',날짜,날짜)
+    

@@ -2,3 +2,50 @@
     1) 데이터의 삽입, 갱신, 삭제를 완전히 데이터베이스에 기록하는 것
     2) 트랜잭션 설정을 "Manual Commit"으로 설정
         - DB 변경 작업 후 COMMIT 혹은 ROLLBACK 명령을 실행해야 함
+
+2. INSERT
+    1) 테이블에 데이터를 입력
+    2) INSERT INTO <table_name> [(<column_name>,...)] VALUES (value, ...)
+    3) RETURNING
+        - INSERT문 수행 후 INSERT한 행을 출력함
+
+3. UPDATE
+    1) 테이블의 데이터를 수정
+    2) UPDATE <table_name> set <column_name>=value [where condition]
+
+4. UPDATE JOIN
+    1) 조인 연산 및 UPDATE 연산을 동시에 처리 할 수 있음
+    2) 예
+        - 판매가격(SLAE_PRC) : 가격(PRC) - (가격 * 할인율)
+        - JOIN과 UPDATE를 한 SQL문에서 동시에 처리
+5. DELETE
+    1) 테이블에서 데이터를 삭제
+    2) DELETE FROM <table_name> [where condition]
+    3) RETURNING
+        - 특정 행을 DELETE한 다음에 DELETE한 행의 내용을 출력함
+
+6. UPSERT
+    1) 테이블에 특정 행을 입력할 때 
+        이미 존재하는 행이라면 컬럼들을 UPDATE하고
+        존재하지 않는 행이라면 INSERT하는 기능
+    2) ON CONFLICT ~ DO NOTHING
+    3) ON CONFLICT ~ DO UPDATE SET
+
+7. GROUP BY
+    1) FROM절 및 WHERE절을 통해서 리턴된 행(집합)을
+        특정 컬럼 혹은 컬럼들을 기준으로 그룹화하는 기능
+    2) FROM
+        ▼
+       WHERE
+        ▼
+       GROUP BY
+        ▼
+       HAVING
+        ▼
+       SELECT
+        ▼
+       DISTINCT
+        ▼
+       ORDER BY
+        ▼
+       LIMIT
