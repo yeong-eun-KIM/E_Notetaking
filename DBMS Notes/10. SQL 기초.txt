@@ -15,41 +15,58 @@
             예) NUMERIC(7,3) : 최대 9999.999까지 저장
         - NUMERIC(총자릿수)
             예) NUMERIC(7) : 최대 9999999까지 저장
-        - SMALLINT : 정수형 저장
-        - INTEGER, INT
+        - SMALLINT : 정수형 저장, 크기는 2byte
+        - INTEGER, INT : 4byte
         - BIGINT
         - SERIAL
             - 데이터가 저장될 때 순차적으로 유일한 숫자(번호)가 저장
     5) 날짜형
         - DATE
             - 날짜값 저장
+            - 일자 데이터를 저장
             - yyyy-mm-dd (2022-09-21)과 같은 형식 사용
         - TIME
             TIME(정밀도)
                 - 시간값 저장
+                - 시간 데이터 저장
                 - 시간값 최대 6자리의 정밀도를 가짐
+        -TIMESTAMP
+            - 일자와 시간 데이터를 모두 저장
         - TIMESTAMPTZ
             - 시간대(TIMEZONE)가 없는 년월시분초.마이크로세컨드 저장
-        - TIMESTAMP
+        - TIMESTAMPT
             - 시간대(TIMEZONE)가 있는 년월시분초.마이크로세컨드 저장
         - INTERVAL
             - 시간 간격
+    6) Boolean
+        - Boolean
+            - 참과 거짓의 값을 저장
 
 2. 테이블 생성
     1) 제약조건
         - 테이블을 구성하는 각각의 컬럼들은 제약조건을 가질 수 있음
         - NOT NULL
-            - 컬럼의 값에 널이 들어갈 수 없다.
+            - 컬럼의 값에 NULL이 들어갈 수 없다.
             - 반드시 데이터 값이 들어가야 함
         - UNIQUE
             - UNIQUE 컬럼에 들어가는 값은 테이블 내에서 유일함을 보장함
+            - 해당 제약 조건이 있는 컬럼의 값은 테이블 내에서 유일해야 함
         - PRIMARY KEY
             - NOT NULL + UNIQUE 한 값이 들어가는 것을 보장함
         - CHECK
+            - 해당 제약 조건이 있는 컬럼은 지정하는 조건에 맞는 값이 들어가야 함
             - 컬럼의 값에 사용자가 지정하는 특정 표현식을 만족하는 데이터가 들어감
                 예) 학점 컬럼은 0.00 ~ 4.50 범위의 값만 허용함
         - FOREIGN KEY
             - 해당 컬럼의 값은 참조하는 부모 테이블에 PK로서 존재하는 것을 보장함
+        - REFERENCES
+            - 해당 제약 조건이 있는 컬럼의 값은 참조하는 테이블의 특정 컬럼에 값이 존재해야함
+
+    2) CTAS (CREATE TABLE AS SELECT)
+        - SELECT문을 기반으로 CREATE TABLE 할 수 있는 CREATE문
+        - 문법
+            - CREATE TABLE NEW_TABLE AS SELECT문
+            - CREATE TABLE IF NOT EXISTS NEW_TABLE AS SELECT문
 
 3. 테이블 수정
     1) 컬럼에 대한 ADD, DROP, RENAME
