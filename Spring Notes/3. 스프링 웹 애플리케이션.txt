@@ -1,0 +1,9 @@
+1. Spring MVC
+    1) 스프링 프레임워크를 구성하는 모듈, 정식 명칭은 Spring Web MVC임
+    2) 서블릿 API를 기반으로 작성된 웹 프레임워크(Web Framework)임
+    3) 프론트 컨트롤러 패턴과 MVC 아키텍쳐 패턴을 사용함
+    4) 유연하고 확장성이 뛰어난 구조를 제공함
+    5) 자바 언어의 애노테이션(Annotation)과 리플렉션(Reflection) API를 적극 사용함
+    6) 애노테이션 기반 프로그래밍 (Annotation-based programming) 모델을 제공함
+    7) 경량 함수형 프로그래밍 모델 (functional programming model)을 지원함
+    
