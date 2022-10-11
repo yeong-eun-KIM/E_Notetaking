@@ -1,0 +1,155 @@
+1. 웹
+    1) 네트워크
+        - 컴퓨터와 컴퓨터를 연결해주는 망
+        - 이런 망들이 모여 더 큰 네트워크인 인터넷이 됨
+    2) 인터넷 시초
+        - ARPANET
+    3) 웹
+        - World Wide Wed (WWW, W3)
+        - 인터넷에 연결된 사용자들이 서로 정보를 공유할 수 있는 서비스
+            - 텍스트, 그림, 소리, 영상 등
+    4) 웹 서비스
+        - 웹 (WWW, http/https)
+        - 이메일 (Email, SMTP/POP3/IMAP)
+        - 파일전송 (FTP, FTP/SFTP)
+    5) 웹 페이지
+        - 하이퍼텍스트라는 특별한 양식으로 제공하는 웹 문서
+    6) 웹의 동작
+        - 클라이언트와 서버 사이를 오가며 동작함
+        - 클라이언트가 요청(request)을, 서버는 응답(response)
+        - http 통신 규약을 이용
+            - 실어 나르는 대상인 문서는 하이퍼텍스트 양식으로 되어 있음
+            - 하이퍼텍스트는 HTML이라는 마크업 언어를 사용해 작성함
+
+    7) HTML (HyperText Markup Language)
+        - 하이퍼텍스트를 마크업하는 언어
+        - 하이퍼텍스트는 참조를 통해 한 문서에서 다른 문서로 접근 할 수 있는 텍스트
+            - 하이퍼링크
+        - 마크는 표시의미로 표시하는 언어를 뜻함
+
+    8) HTML 기본구조
+        - <!DOCTYPE html> 선언으로 시작
+            html의 가장 최신 버전인 html5를 사용한다는 의미
+        - <head> 태그
+            페이지에 표시되지 않음
+            대신 페이지 정보(메타 테이터)를 제공
+            - <meta> 태그
+                    <meta charset="UTF-8">
+                        - 문서에서 허용되는 문자 표시
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        - viewport : 요소를 볼 수 있는 화면
+                        - content : "width=device-width, initial-scale=1.0"
+                                개인마다 갖고 있는 기기 화면에 맞춤
+            - <title> 태그
+                - html 문서 제목 표현
+
+2. 태그 (Tag)
+    1) 꼬리표
+    2) HTML에서는 웹 문서에 정보를 정의해주는 형식
+    3) <>는 시작을, </>는 끝을 알려줌
+
+3. VSCode 확장 프로그램
+    1) Auto Close Tag
+    2) Live Server
+    3) Material Icon Theme
+    4) Prettier - Code formatter
+
+4. 태그 이해하기
+    1) <태그명> 요소 </태그명>
+    2) <태그명 요소>
+        - 닫는 태그가 없는 형태 = 자체 닫기 태그 (self closing tag)
+        - img, input, link 등
+    3) 
+        h : 제목 태그
+        br : 줄마꿈 태그
+        p : 문단 지정 태그
+        div : 영역 지정 태그
+        span : 범위 지정 태그
+        link : 현재 문서와 외부 소스를 연결해주는 태그
+        img : 이미지를 나타내는 태그
+        form : 폼(입력양식)을 만드는 태그
+        button : 버튼 만드는 태그
+        ol, ul, li : 리스트를 나타내는 태그
+
+    4) h 태그
+        - heading
+        - 제목
+        - 검색 엔진이 h태그에 기반하여 결과물을 보여줌
+            - 검색되고 싶은 키워드가 있다면 h 태그에 넣으면 좋음
+        - 자동으로 줄이 바뀜
+        - 숫자가 커질수록 숫자 크기가 작아짐
+        - html 한 페이지에서 h1 태그는 한번만 사용함
+
+    5) br, p 태그
+    6) div, span 태그
+    7) link 태그
+        - 현재 파일이 다른 파일과 연결되어 있는 관계 정보를 표현하는 데 사용
+
+        - <link rel = "속성값" href = "파일 경로">
+            rel : relations
+            href : hyper-references
+        예) <link rel = "stylesheet" href = "style.css">
+    8) img 태그
+        - image
+        - 이미지를 삽입하는 태그
+        - <img src = "파일 경로" alt = "설명" width =  "너비" height = "높이">
+            src : 이미지 경로
+            alt : 이미지를 설명하는 문구
+            width : 이미지 가로 크기
+            height : 이미지 세로 크기
+    9) form 태그
+        - 사용자의 입력 양식을 만들 때 사용함
+            - input, label 등과 함께 쓰임
+        - <form>요소 태그</form>
+
+        - <label> : 상품에 스티커 라벨을 붙이듯 폼에 이름을 붙여주는 것임
+            - for : label이 설명하는 input 등의 idf를 지정함
+        - action : form 태그의 input 태그 type 속성을 "submit"으로 주고 
+        제출 버튼 클릭시 입력값을 처리할 대상을 지정해 줌 (이동하라고 지정)
+        - id : 태그의 이름을 지정해주는 역할
+        - type : input 태그의 속성을 결정함
+            예) text :  텍스트 입력, checkbox : 체크박스, password : 비밀번호, date : 날짜
+    10) button 태그
+        - 클릭 할 버튼 만들 때 사용
+        - type
+            - button : 누를 수 있는 버튼
+            - submit : form을 제출하는 버튼
+            - reset : form 입력값을 초기화하는 버튼
+    11) 리스트 태그 : ol, ul
+        - ol (ordered list)
+            - 순서가 있는 리스트
+        - ul (unordered list)
+            - 순서가 없는 리스트
+        - li (list item)
+            - 목록을 구성하는 개별 항목(아이템)
+
+5. HTML 특징
+    1) 태그의 부모 자식 관계
+    2) HTML과 검색되는 텍스트
+    3) 검색 엔진 최적화
+        - 검색 엔진
+            - 여러 웹 사이트나 웹 페이지 등을 검색해주는 시스템이나 프로그램 등을 통침함
+            - 웹에서 원하는 정보를 찾는 데 걸리는 시간을 최소화해 줌
+        - 메타 태그
+            - 검색 엔진에 정보를 제공할 목적의 태그
+            - head 태그에는 메타 데이터가 들어가고 이 메타 데이터는 추후 검색 엔진이
+            웹 페이지를 읽을 때 사용함
+        - 시맨틱 태그
+            - 웹 페이지 구조를 구성하는 태그
+            - 검색 엔진 봇이 읽을 수 있는 문서 구조를 작성하는데 사용
+                - <header></header>
+                    - 소개 요소 또는 탐색 링크
+                - <nav></nav>
+                    - 주로 메뉴 구성임
+                - <section></section>
+                    - 본문 내용을 포함하는 공감임
+                    - <article></article>
+                        - 독립적인 요소로 section안에 존재
+                - <aside></aside>
+                    - 사이드바처럼 좌우에 위치하는 공간
+                - <footer></footer>
+                    - 문서 하단을 정의함 (저작권 명시 등)
+
+            - 비시맨틱 태그
+                - 요소에 대하여 어떤 설명도 하지 않는 태그
+                - div, span ...
