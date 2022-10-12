@@ -23,7 +23,7 @@
                     - WEB-INF 등 웹 애플리케이션 리소스가 위치
                 - src\test\java
                     - jUnit 등 테스트 파일이 위치
-                -src\test\resources
+                - src\test\resources
                     - 테스트 시 필요한 resource 파일이 위치
         - Gradle
     2) 버전제어시스템 (DVCS)
