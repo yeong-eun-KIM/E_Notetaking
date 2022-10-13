@@ -8,10 +8,17 @@
     1) 네트워크 통신 제어, 스레드 기반 병렬처리함
     2) 서블릿과 JSP의 생명주기(생성, 호출, 소멸)를 관리함
     3) 다수의 웹 애플리케이션을 실행 할 수 있고 개별로 환경을 관리함
-    
 
 2. 웹 프로그래밍 근간
     1) 요청(request)과 응답(response)
+        - HttpServletRequest
+            - String getParameter(String name)
+                - name의 값을 알고 있을 때, name에 대한 전송된 값을 받아오는데 사용함
+            - String[] getParameterValues(String name)   
+                - 같은 name에 대해 여러 개의 값을 얻을 때 사용함
+            - Enumeration getParameterNames
+                - 전송되는 데이터가 많은 경우 name 값을 일일이 기억할 필요없이 이용해서 name을 얻음
+        - HttpServletResponse
     2) 출력
     3) 쿠키, 세션
     4) 페이지, 애플리케이션
