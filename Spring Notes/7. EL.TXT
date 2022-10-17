@@ -1,0 +1,46 @@
+1. 소개
+    1) 표현 언어 (Expression Language)
+        - 변수의 값을 표현식보다 편하게 출력할 수 있게 해줌
+            - 표현식 (<%= %>)
+        - 스크립트 언어
+        - JSP의 기본 문법 보완하는 역할
+        - 4가지 영역(Scope)
+    2) EL 기본 사용법
+        ${ 속성 }
+        - 속성
+            - 영역에 저장된 속성을 뜻함
+            - 예) <h2>${ requestScope.saveVar }</h2>
+    3) EL의 객체 표현 방식
+        - .(점)이나 [](대괄호) 사용
+        - 예) ${param.id}
+              ${paramValues.sns[0]}
+
+2. EL의 내장 객체
+    1) 4가지 영역에 접근하거나 사용자의 요청처리하기 위한 객체들 제공함
+    2) 4가지 영역
+        - pageScope :page 영역에 저장된 속성값을 읽어옴
+        - requestScope : request 영역에 저장된 속성값을 읽어옴
+        - sessionScope : session 영역에 저장된 속성값을 읽어옴
+        - applicationScope : application 영역에 저장된 속성값을 읽어옴
+    3) 폼값 처리하기
+        - 전송 방식(get/post)에 request.getParameter()로 폼값을 받을 수 있음
+        - param
+            - request.getParameter("매개변수명")과 동일함
+            - ParamValues
+                -reqeust.getParameterValues("매개변수명")과 동일함
+                - 값을 문자열 배열로 받아옴
+                - 다중 선택 가능한 checkbox를 통해 전달된 폼 값을 받을 때 사용
+    4) 객체 전달하기
+        - 폼으로는 객체 전송이 불가능
+        - 대신 영역을 사용함
+            - 객체를 영역에 저장한 후 , 내장 객체의 영역이 공유되는 특징을 활용해서 전송
+    5) 그 외 내장 객체
+        - cookie : 쿠키를 읽을 때 사용함
+        - header
+            - request.getHearder() 동일함
+        - headerValues
+            - request.getHeaders() 동일함
+        - initParam
+            - web.xml에 설정한 컨텐스트 초기화 매개변수를 읽을 때 사용함
+        - pageContext
+            - JSP의 pageContext 내장 객체와 동일 역할

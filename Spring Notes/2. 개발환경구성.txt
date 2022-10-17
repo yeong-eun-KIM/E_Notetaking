@@ -21,6 +21,8 @@
                     - 프로퍼티 파일이나 XML 파일, 정적 파일 등 리소스 파일이 위치
                 - src\main\webapp
                     - WEB-INF 등 웹 애플리케이션 리소스가 위치
+                    - servlet-context.xml
+                        - web 관련
                 - src\test\java
                     - jUnit 등 테스트 파일이 위치
                 - src\test\resources
