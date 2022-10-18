@@ -7,3 +7,19 @@
     6) 애노테이션 기반 프로그래밍 (Annotation-based programming) 모델을 제공함
     7) 경량 함수형 프로그래밍 모델 (functional programming model)을 지원함
     
+2. 관심사의 분리 (Separation of Concerns)
+    1) 클라이언트에서 요청이 들어옴
+    2) DispatcherServlet에서 입력을 처리, new Model()을 생성하여 Controller로 보냄
+    3) Controller에서 매개변수로 Map의 형태인 Model을 받음
+    4) 유효성 검사를 통과하면 처리 및 Model에 작업 결과를 저장
+    5) 작업결과를 보여줄 View의 이름을 String으로 DispatcherServlet에게 반환
+    6) DispatcherServlet에서 반환된 View의 이름을 찾아서 Model을 전달
+    7) 해당 View에서 클라이언트로 응답을 보냄 
+
+        - 컨트롤러의 메서드 리턴타입
+            - String : 뷰이름을 반환
+            - void : 매핑된 url의 끝단어가 뷰 이름이 됨
+            - ModelAndView : Model과 뷰 이름을 반환
+                - ModelAndView 객체를 Controller 내부에서 생성
+                - ModelAndView에 뷰의 이름과 작업 결과를 저장해서 반환
+

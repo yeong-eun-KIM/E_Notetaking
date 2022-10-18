@@ -1,0 +1,45 @@
+1. JSP Standard Tag Library (JSTL)
+    1) 스크립틀릿(<% %>)을 사용하지 않고도 제어문, 반복문 등을 사용할 수 있음
+        - 처리를 해주는 태그를 모아 표준으로 만들어 놓은 라이브러리
+    2) EL과 함께 주로 사용함
+
+2. JSTL에서 제공하는 태그 종류
+    1) Core 태그
+        - 변수 선언, 조건문/반복문, URL 처리
+        - 접두어 : c
+        - URI : http://java.sun.com/jstl/core
+    2) Formatting 태그
+        - 숫자, 날짜, 시간 포맷 지정
+        - 접두어 : fmt
+        - URI : http://java.sun.com/jstl/fmt
+    3) XML 태그
+        - XML 파싱
+        - 접두어 : x
+        - URI : http://java.sun.com/jstl/xml
+    4) function 태그
+        - 컬렉션, 문자열 처리
+        - 접두어 : fn
+        - URI : http://java.sun.com/jstl/functions
+    5) SQL 태그
+        - 데이터베이스 연결 및 쿼리 실행
+        - 접두어 : sql
+        - URL : http://java.sun.com/jstl/sql
+
+3. 코어(Core) 태그
+    1) set
+        - 사용할 변수나 자바빈즈를 생성할 때 사용함
+        - setAttribute() 메서드와 같은 역할
+        - <c:set var="변수명" value="값" scope="영역" />
+            - scope 기본값 : page
+        - target 속성 : 자바빈즈를 설정함
+        - property 속성 : 자바빈즈의 속성, 즉 멤버 변수의 값을 지정함
+    2) remove
+    3) if
+    4) choose
+    5) forEach
+    6) forTokens
+    7) import
+    8) redirect
+    9) url
+    10) out
+    11) catch
