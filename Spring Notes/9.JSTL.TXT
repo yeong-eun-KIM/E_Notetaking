@@ -35,8 +35,35 @@
         - property 속성 : 자바빈즈의 속성, 즉 멤버 변수의 값을 지정함
     2) remove
     3) if
+        - 자바의 if와 동일
+        - else가 별도로 없음
+        - <c:if test test="조건" var="변수명" scope="영역">
+            조건이 true일 때 출력할 문장
+          </c:if>
+            - var : 조건 결과를 저장할 변수명 저장
+        - 주의사항
+            - test 속성 값으로 EL이 아닌 일반 값이 오면 무조건 false를 반환함
+                - 단, 일반 값으로 true가 사용되는 것은 예외임
+            - 문자열 'tRuE'는 대소문자 상관없음
+            - test 속성에 EL을 통해 조건식을 쓸 때 공백이 삽입되면 무조건 false를 반환함
     4) choose
+        - 다중 조건
+        - <c:choose>
+            <c:when test="조건1">조건1을 만족하는 경우</c:when>
+            <c:when test="조건2">조건2을 만족하는 경우</c:when>
+            <c:otherwise>아무 조건을 만족하지 않는 경우</c:otherwise>
+          </c:choose>
     5) forEach
+        - 반복
+        - for문, 향상된 for문
+        - <c:forEach var="변수명" begin="시작값" end="마지막값" step="증가값" />
+        - <c:forEach var = "변수명" items="컬렉션 혹은 배열"/>
+            - varStatus : 루프의 현재 상태를 알려주는 변수의 이름을 지정함
+                - current : var에 지정한 현재 루프의 변수값 반환
+                - index : var에 지정한 현재 루프의 변수값 반환 (인덱스를 표시)
+                - count : 실제 반복 횟수
+                - first : 루프의 처음일때 true 반환
+                - last : 루프의 마지막일때 true 반환
     6) forTokens
     7) import
     8) redirect
