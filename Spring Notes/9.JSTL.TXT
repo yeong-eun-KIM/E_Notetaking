@@ -65,8 +65,13 @@
                 - first : 루프의 처음일때 true 반환
                 - last : 루프의 마지막일때 true 반환
     6) forTokens
+        - 구분자를 기준으로 문자열을 나눠 토큰의 개수만큼 반복해줌
+        - <c:forToken items="문자열" delims="문자열 구분자" var="변수명" />
     7) import
     8) redirect
+        - sendRedirect() 동일함
+        - 페이지 이동 처리
+        - <c:redirect url="이동할 경로 및 URL" />
     9) url
     10) out
     11) catch
