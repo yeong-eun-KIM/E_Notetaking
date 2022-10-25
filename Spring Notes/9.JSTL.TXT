@@ -73,5 +73,34 @@
         - 페이지 이동 처리
         - <c:redirect url="이동할 경로 및 URL" />
     9) url
+        - 지정한 경로와 매개변수를 이용해서 컨텍스트 루트를 포함한 URL을 생성함
+        - <form>태그 action 속성에 사용
+        - <c:url value="설정한 경로" scope="영역" />
+        - var 속성을 이용하면 미리 선언해둔 URL을 원하는 위치에 출력가능
+            - ${변수명 }
     10) out
+        - <c:out value = "출력할 변수" default = "기본값" escapeXml="특수문자 처리 유무" />
+        - escapeXml 속성 : 특수문자를 반환할지 여부 결정함
+                            기본값은 true임, 특수 기호를 그대로 출력함
     11) catch
+        - 발생한 예외를 잡아 처리하는 역할임
+        - 예외가 발생하면 지정한 변수에 대해 에러 메세지가 저장되어 전달됨
+        - <c:catch var="변수명">
+            실행 코드
+            <c:catch/>
+
+4. Formatting 태그 (국제화 태그)
+    1) 국가별로 다양한 언어, 날짜, 숫자 형식을 설정할 때 사용
+    2) 종류
+        - 숫자 포맷
+            - formmatNumber : 숫자 포맷 설정
+            - parseNumber : 문자열을 숫자 포맷으로 변환함
+        - 날짜 포맷
+            - formatDate : 날짜나 시간의 포맷 설정
+            - parseDate : 문자열을 날짜 포맷으로 변환함
+        - 타임존 설정
+            - setTimeZone : 시간대 설정 정보를 변수에 저장
+            - timeZone : 시간대 설정
+        - 로케일 설정
+            - setLocale : 통화기호나 시간대를 설정 지역에 맞게 표시함
+            - requestEncoding : 요청 매개변수의 문자셋 설정함
