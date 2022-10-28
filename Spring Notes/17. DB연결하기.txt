@@ -9,12 +9,28 @@
         - 프로토콜
             - jdbc : postgresql://호스트명(IP):포트번호:스키마
 
-    2) Statement : 정적 쿼리문 실행할 때 사용됨
+    2) Statement : 인파라미터가 없는 정적 쿼리문 실행할 때 사용됨
     3) PreparedStatement : 인파라미터가 있는 동적 쿼리문 실행 할 때 사용됨
         - 인파라미터 : 쿼리문 작성 시 매개변수로 전달된 값을 설정 할 때 사용됨
-            - ? (물음표)로 표현함
+            - 쿼리문 작성 시 매개변수로 전달된 값 설정할 때 사용됨
+            - 미리 작성해둔 쿼리문에서 일부 값을 나중에 결정 할 수 있게 해주는 매개변수
+            - 쿼리문에서 ? (물음표)로 표현함
+        - executeUpdate()
+            - INSERT, UPDATE, DELETE 쿼리문 실행할 때 사용함
+            - 실행 후 영향을 받은 행의 개수가 int형으로 반환됨
+        - executeQuery()
+            - SELECT 쿼리문 실행 할 때 사용함
     4) ResultSet
         - SELECT 쿼리문의 결과를 저장할 때 사용됨
         - 결과 테이블 커서가 튜플을 가리킴
             - next() : 다음 튜플을 가리킴
             - getInt(int columnIndex)  : columnIndex가 가리키는 열 값을 반환
+
+3. JDBC 프로그래밍 순서
+    1) JDBC 드라이버 로드
+    2) 데이터베이스 연결
+    3) 쿼리문 작성
+    4) 쿼리문 객체 생성 (Statement, PreparedStatement)
+    5) 쿼리 실행
+    6) 실행 결과 처리
+    7) 연결 해제
