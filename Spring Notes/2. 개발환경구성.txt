@@ -24,7 +24,7 @@
                     - servlet-context.xml
                         - web 관련 설정 파일
                     - root-context.xml
-                        - non-web 관련 설정 파
+                        - non-web 관련 설정 파일
                 - src\test\java
                     - jUnit 등 테스트 파일이 위치
                 - src\test\resources

@@ -20,6 +20,8 @@
             - 실행 후 영향을 받은 행의 개수가 int형으로 반환됨
         - executeQuery()
             - SELECT 쿼리문 실행 할 때 사용함
+            - 조회한 레코드들의 집합인 ResultSet 객체를 반환함
+            
     4) ResultSet
         - SELECT 쿼리문의 결과를 저장할 때 사용됨
         - 결과 테이블 커서가 튜플을 가리킴

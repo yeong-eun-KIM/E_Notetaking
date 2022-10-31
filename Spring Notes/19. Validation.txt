@@ -1,0 +1,58 @@
+1. Validation
+    1) 유효성 검증
+        - 사용자 또는 서버의 요청 (http request) 내용에서 잘못된 내용이 있는지 확인하는 단계
+
+2. Validation 검증
+    1) 데이터 검증
+        - 필수 데이터의 존재 유무
+        - 문자열의 길이나 숫자형 데이터의 경우 값의 범위
+        - email, 신용카드 번호, date 등 특정 형식에 맞춘 데이터
+
+3. Spring의 Validation
+    1) 스프링은 웹 레이어에 종속적이지 않은 방법으로 밸리데이션을 함
+    2) Validator 인터페이스 구현(implement)을 통한 Validation
+        - 객체를 검증하기 위한 인터페이스
+        - 객체 거증기(Validator) 구현에 사용
+            - boolean supports(Class<?> clazz)
+                - 이 Validator가 동작할 조건을 정의, 주로 class의 타입을 비교
+                - 이 검증기로 검증가능한 객체
+            - void Validate((Object target, Errors errors)
+                - 원하는 검증을 진행함
+                - 객체를 검증하는 메서드
+                    - Object target
+                        - 검증할 객체
+                    - Error errors
+                        - 검증시 발생한 에러저장소
+                        - reject(String errorCode)
+                        - rejectValue(String field, String errorCode)
+                        - rejectValue(String field, String errorCode, String defaultMessage)
+                            - field : 에러 발생 필드
+                            - errorCode : 해당 에러에 대한 에러코드
+                            - defaultMessage : 해당 에러에 대한 default 메세지
+    3) Validator를 검증기(Validator)로 등록
+        - WebDataBinder를 사용
+            - 타입 변환
+            - 데이터 검증
+            - bindingResult
+
+
+
+4. Validation 수행 시 주의사항
+    1) Validation이 너무 여러 군데에 흩어져 있으면 테스트 및 유지보수성이 떨어짐
+        - 정책 변경시에 모든 중복 코드를 수행해야 함
+        - 여러 군데서 다른 정책을 따르는 검증이 수행될 수 있음
+    2) ErrorCode, ErrorMessage를 활용해 응답 생성
+
+5. Data Binding
+    1) 사용자나 외부 서버의 요청 데이터를 특정 도메인 객체(DTO)에 저장해서 웹 프로그램에 request에 담아 주는 것을 뜻함
+
+6. MessageSource
+    1) 다양한 리소스(파일, 배열)에서 메시지를 읽기 위한 인터페이스
+    2) ResourceBundleMessageSource를 servlet-context.xml에 등록
+        - getMessage(String code, Object[] args, String defaultMessage, Locale locale)
+
+    3) error_message.properties
+        - 메시지 코드(errorCode) ------ 메시지
+
+7. (스프링이 제공하는) 커스텀 태그 라이브러리 사용
+    1) <form></form>
