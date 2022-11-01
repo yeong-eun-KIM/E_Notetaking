@@ -107,3 +107,9 @@
         - 웹유저 
             - casual end user : 데이터베이스 언어를 이용해 데이터베이스 접근 및 조작 
                 - 분석가 
+
+9. SQL 문 종류
+    1) DML - SELECT, INSERT, UPDATE, DELETE
+    2) DDL - CREATE, ALTER, DROP, RENAME
+    3)
+    4) 
