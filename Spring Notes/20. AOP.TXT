@@ -16,19 +16,21 @@
     5) 메서드의 시작 또는 끝에 자동으로 코드(advice)를 추가해주는 기술
 
 4. AOP 관련 용어
-    1) target (타겟)
+    1) target (타겟) Object
         - advice가 추가될 객체
         - 핵심기능을 담고 있는 모듈
         - 타겟은 부가기능을 부여할 대상이 됨
     2) advice (advice)
         - target에 동적으로 추가될 부가 기능(코드)
-        - 타겟에 제공할 부가기능을 담고 있는 모듈
+        - 타겟에 제공할 부가기능을 담고 있는 
+        - 조언, AOP에서 실제로 적용하는 기능(로깅, 트랜잭션, 인증 등)
     3) join point (조인 포인트)
         - advice가 추가(join)될 대상(메서드)
         - 어드바이스가 적용될 수 있는 위치
         - 타겟 객체가 구현한 인터페이스의 모든 메서드는 조인 포인트가 됨
     4) pointcut
         - join point들을 정의한 패턴
+        - join point 중에서 해당 Aspect를 적용할 대상을 뽑을 조건식
         - 어드바이스를 적용할 타겟의 메서드를 선별하는 정규표현식임
         - 포인트컷 표현식은 execution으로 시작하고, 메서드의 SIgnature를 비교하는 방법을 주로 이용함
             - execution(*kr.co.ezenac.*.*(..))
@@ -42,3 +44,52 @@
         - target에 advice를 추가해서 proxy를 생성하는 것
         - 위빙은 포인트컷에 의해서 결정된 타겟의 조인 포인트에 부가기능(어드바이스)을 삽입하는 과정을 뜻함
         - 위빙은 AOP가 핵심기능(타겟)의 코드에 영향을 주지 않으면서 필요한 부가기능(어드바이스)을 추가할 수 있도록 해주는 핵심적인 처리과정
+    7) Aspect
+        - 여러 클래스나 기능에 걸쳐저 있는 관심사, 그리고 그것들을 모듈화함
+        - 애스펙트는 AOP의 기본 모듈임
+        - 애스펙트 = 어드바이스 + 포인트컷
+        - 애스팩트는 싱글톤 형태의 객체로 존재함
+        - AOP중에서 가장 많이 활용되는 부분은 @Transaction(트랜잭션) 기능임
+
+5. Advice의 종류
+    1) before advice @Before
+        - 메서드의 시작 부분에 추가되는 부가 기능
+        - 전처리 어드바이스
+        - 프록시는 타겟 객체에 대한 호출을 가로챈 다음 어드바이스의 부가기능 로직을 수행하고 타겟의 핵심기능 로직을 호출함
+    2) after advice @After
+        - 메서드의 끝 부분에 추가되는 부가 기능
+        - 후처리 어드바이스
+        - 타겟의 핵심기능 로직 메서드를 호출한 후에 부가기능(어드바이스)을 수행하는 경우
+    3) around advice @Around
+        -  메서드의 시작과 끝 부분에 추가되는 부가 기능
+    4) after returning @AtferReturning
+        - 예외가 발생하지 않았을때 실행되는 부가 기능
+    5) after throwing @AfterThrowing
+        - 예외가 발생했을 때 실행되는 부가 기능
+
+6. pointcut expression
+    1) advice가 추가될 메서드를 지정하기 위한 패턴
+    2) execution([반환타입] 패키지명.클래스명.메서드명(매개변수 목록))
+        - "execution(* kr.co.ezenac.*.*(..))"
+        예)
+            - execution(* hello(..))
+                - hello라는 이름을 가진 메서드를 선정하는 것임
+                - 파라미터는 모든 종류를 다 허용함
+            - execution(* hello())
+                - hello 메서드 중에서 파라미터가 없는 것만 선택하는 것인
+            - execution(* kr.co.ezenac.user.service.UserServiceImpl.*(..))
+                - kr.co.ezenac.user.service.UserServiceImpl 클래스를 직접 지정하여 이 클래스가 가진 모든 메서드를 선택함
+            - execution(* kr.co.ezenac.user.service.*.*(..))
+                - kr.co.ezenac.user.service 패키지의 모든 클래스에 적용됨
+                - 서브 패키지의 클래스는 포함되지 않음
+            - execution(* kr.co.ezenac.user.service..*.*(..))
+                - kr.co.ezenac.user.service 패키지의 모든 클래스에 적용됨
+                - 서브 패키지의 클래스는 포함됨
+            - execution(* *..MyClass.*(..))
+                - 패키지에 상관없이 MyClass이라는 이름의 모든 클래스에 적용됨
+                - 다른 패키지에 같은 이름의 클래스가 있어도 적용이 됨
+
+7. JoinPoint 인터페이스
+    1) String AOP 혹은 AspectJ에서 AOP가 적용되는 지점
+    2) 해당지점 JoinPoint라는 인터페이스로 나타냄
+    3) 어드바이스는 JoinPoint의 하위 클래스인 ProceedingJoinPoint 타입의 파라미터를 필수적으로 선언해야 함
