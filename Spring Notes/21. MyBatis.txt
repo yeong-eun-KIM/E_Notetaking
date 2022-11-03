@@ -14,12 +14,56 @@
         - SQL에 변경이 있을 때마다 자바 코드를 수정하거나 컴파일 하지 않아도 됨
 
 2. SqlSessionFactoryBean과 SqlSessionTemplate
-    1) SqlSessionFactory
+
+
+3. MyBatis 주요 컴포넌트
+    1) MyBatis 설정파일 (config.xml)
+        -데이터베이스의 접속 주소 정보, Mapper 파일의 경로 등 고정된 환경정보 설정
+        - <typeAliases>
+            <typeAlias alias="BoardDto" type="kr.co.heart.domain.BoardDto" />
+          </typeAliases>
+        - DAO문
+    2) mapping 파일 (Mapper.xml)
+        - SQL문과 OR Mapping을 설정
+    3) SqlSessionFactory
         - SqlSession을 생성해서 제공
-    2) SqlSession
+    4) SqlSession
         - SQL 명령을 수행하는데 필요한 메서드 제공
-    3) SqlSessionFactoryBean
+        - 핵심적인 역할을 하는 클래스
+    5) SqlSessionFactoryBean
         - SqlSessionFactory를 spring에서 사용하기 위한 빈(bean)
-    4) SqlSessionTemplate
+        - MyBatis 설정파일을 바탕으로 SqlSessionFactory를 생성함
+    6) SqlSessionTemplate
         - SQL명령을 수행하는데 필요한 메서드 제공
         - thread-safe( 멀티스레드에 안전)
+        - 핵심적인 역할을 하는 클래스
+        - SqlSession 인터페이스를 구현
+        - Spring Bean으로 등록해야 함
+
+4. sqlSession의 주요 메서드
+    1) T selectOne (String statement)
+       T selectOne (String statement, Object parameter)
+        - 하나의 행을 반환하는 select에 사용
+        - parameter로 sql에 bingding될 값 제공
+    2) List<E> selectList(String statement)
+       List<E> selectList(String statement, Object parameter)
+        - 여러 행을 반환하는 select에 사용
+    3) Map<K,V> selectMap(String statement, String keyCol)
+       Map<K,V> selectMap(String statement, String keyCol, Object parameter)
+        - 여러 행을 반환하는 select에 사용
+        - keyCol에 Map의 key로 사용할 컬럼 지정
+    4) int insert(String statement)
+       int insert(String statement, Object parameter)
+        - insert문 실행하고 insert된 행의 갯수를 반환
+    5) int delete(String statement)
+       int delete(String statement, Object parameter)
+        - delete문 실행하고 delete된 행의 갯수를 반환    
+    6) int update(String statement)
+       int update(String statement, Object parameter)
+        - update문 실행하고 update된 행의 갯수를 반환    
+5. 구현순서
+    1) 테이블 생성
+    2) Mapper XML & DTO 작성
+    3) DAO 인터페이스 구현
+    4) Service 인터페이스 구현
+    5) Controller 인터페이스 구현
