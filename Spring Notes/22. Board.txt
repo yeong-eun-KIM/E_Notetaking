@@ -76,3 +76,39 @@
             error : { 오류 발생 시 처리}
             complete : {작업 완료 후 처리}
         })
+
+7. REST
+    1) 웹서비스 디자인 아키텍쳐 접근 방식
+    2) 프로토콜에 독립적이며, 주로 HTTP를 이용해서 구현
+    3) 리소스 중심의 API 디자인
+    4) HTTP 메서드로 수행할 작업을 정의
+    5) 예
+        리소스                      POST                   GET                     PUT                    DELETE
+        /customer               새 고객 만들기      모든 고객 검색          고객 대량 업데이트          모든 고객 제거
+        /customer/1             error               고객1에 대한            고객1이 있는 경우
+                                                    세부정보 검색           세부정보 업데이트           고객1제거
+        /customer/1/orders      고객1에 대한        고객1에 대한            고객1의 주문                
+                                새주문 만들기       모든주문 검색           대량 업데이트               고객1의 주문 제거
+        
+8. REST API
+    1) REST 규약을 준수하는 API
+    2) 예
+        작업            URI             HTTP메서드
+        읽기            /board/read?bno=번호        GET         저장된 번호의 글을 보여줌
+        쓰기            /board/write                POST        작성한 게시물을 저장함
+        삭제            /board/remove               POST        게시물을 삭제함
+        수정            /board/modify               POST        게시물을 수정함
+        ===================================================================================
+        작업            URI                        HTTP메서드
+        읽기            /comments                    GET         모든 댓글을 보여줌
+        읽기            /comments/{cno}              GET         지정된 번호의 댓글을 보여줌
+        쓰기            /comments/write              POST        작성한 댓글을 저장함
+        삭제            /comments/{cno}              DELETE      지정된 번호의 댓글을 삭제함
+        수정            /comments/{cno}              PUT/PATCH   지정된 댓글을 수정함
+
+9. 댓글 기능 구현 순서
+    1) DB 테이블 생성
+    2) Mapper XML 작성
+    3) DAO 작성 (&테스트)
+    4) Service 작성 (&테스트)
+    5) 컨트롤러 작성
