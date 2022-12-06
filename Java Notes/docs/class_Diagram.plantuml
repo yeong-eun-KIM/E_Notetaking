@@ -1,0 +1,71 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class BoardController {
+  ~ boardService: BoardService
+}
+interface BoardDao << interface >>
+class BoardDaoImpl {
+  - session: SqlSession
+  - namespace: String
+}
+class BoardDto {
+  - comment_cnt: int
+  - bno: Integer
+  - view_cnt: int
+  - reg_date: Date
+  - title: String
+  - up_date: Date
+  - content: String
+  - writer: String
+}
+interface BoardService << interface >>
+class BoardServiceImpl {
+  ~ boardDao: BoardDao
+}
+class PageResolver {
+  - showNext: boolean
+  + NAV_SIZE: int
+  - beginPage: int
+  - endPage: int
+  - sc: SearchItem
+  - totalCnt: int
+  - showPrev: boolean
+  - totalPage: int
+}
+class Person {
+  ~ age: int
+  ~ name: String
+}
+class SearchItem {
+  - keyword: String
+  - offset: Integer
+  + DEFAULT_PAGE_SIZE: int
+  + MAX_PAGE_SIZE: int
+  - page: Integer
+  - pageSize: Integer
+  + MIN_PAGE_SIZE: int
+  - option: String
+}
+class User {
+  - birth: Date
+  - reg_date: Date
+  - pwd: String
+  - id: String
+  - sns: String
+  - name: String
+  - email: String
+}
+interface UserDAO << interface >>
+class UserDaoImpl {
+  ~ ds: DataSource
+  ~ FAIL: int
+}
+
+BoardDaoImpl      -[#008200,dashed]-^  BoardDao         
+BoardServiceImpl  -[#008200,dashed]-^  BoardService     
+UserDaoImpl       -[#008200,dashed]-^  UserDAO          
+@enduml

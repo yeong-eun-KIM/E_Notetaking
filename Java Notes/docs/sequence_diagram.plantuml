@@ -1,0 +1,45 @@
+@startuml
+participant User
+participant "Web Client" as C
+participant "Purplaying Server" as S
+participant "DBMS Server" as D
+
+User -> C : GET /
+activate C
+C -> S : static asset 요청(HTML,CSS 등)
+activate S
+S --> C : HTML,CSS 등 응답
+deactivate S
+C --> C : 로그인페이지로 redirection
+C --> User : 로그인 입력 페이지
+
+User -> C : 1.아이디/PW 입력
+C -> C : cookie에 아이디 저장
+C -> C : 게시판 리스트 페이지로 redirection
+
+C --> User : 게시판 리스트 페이지
+User -> C : 2. 글쓰기 버튼 선택
+
+C -> S : 게시판 글쓰기 폼 요청(HTML/CSS 등) 
+activate S
+S -> C : 게시판 글쓰기 폼 응답
+deactivate S
+
+C -> C : 게시판 글쓰기 폼 출력
+C -> C : 게시판 글쓰기 확인 선택
+
+S -> D : 게시글 DB insert 요청
+D --> S : 게시글 DB insert 응답
+C -> C : 게시글 리스트 페이지로 redirection
+C --> User : 게시글 리스트 페이지 노출
+
+loop
+    User -> C : 3. 게시글 작성 & 추가
+    
+
+end
+
+
+deactivate C
+
+@enduml
